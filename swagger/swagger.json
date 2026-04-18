@@ -1,0 +1,175 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Facebook Page API",
+    "version": "1.0.0",
+    "description": "API quản lý Facebook Page bằng Graph API"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/page/{pageId}": {
+      "get": {
+        "summary": "Lấy thông tin Page",
+        "parameters": [
+          {
+            "name": "pageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lấy thông tin Page thành công"
+          }
+        }
+      }
+    },
+
+    "/api/page/{pageId}/posts": {
+      "get": {
+        "summary": "Lấy danh sách bài viết",
+        "parameters": [
+          {
+            "name": "pageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lấy danh sách bài viết thành công"
+          }
+        }
+      },
+
+      "post": {
+        "summary": "Đăng bài viết mới",
+        "parameters": [
+          {
+            "name": "pageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Bài viết test từ Swagger API"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Đăng bài viết thành công"
+          }
+        }
+      }
+    },
+
+    "/api/page/post/{postId}": {
+      "delete": {
+        "summary": "Xóa bài viết",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Xóa bài viết thành công"
+          }
+        }
+      }
+    },
+
+    "/api/page/post/{postId}/comments": {
+      "get": {
+        "summary": "Lấy comments bài viết",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lấy comments thành công"
+          }
+        }
+      }
+    },
+
+    "/api/page/post/{postId}/likes": {
+      "get": {
+        "summary": "Lấy likes bài viết",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lấy likes thành công"
+          }
+        }
+      }
+    },
+
+    "/api/page/{pageId}/insights": {
+      "get": {
+        "summary": "Lấy insights Page",
+        "parameters": [
+          {
+            "name": "pageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lấy insights thành công"
+          }
+        }
+      }
+    }
+  }
+}
