@@ -93,6 +93,24 @@ services:
       KAFKA_BROKER: kafka:9092
       TOPIC_NAME: raw_events
 
+  core-service:
+    build: .
+    container_name: core-service
+    command: node services/core-service/consumer.js
+    restart: always
+
+    depends_on:
+      - kafka
+
+    environment:
+      KAFKA_BROKER: kafka:9092
+      TOPIC_NAME: raw_events
+      # Điền key thật khi deploy
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      PAGE_ACCESS_TOKEN: ${PAGE_ACCESS_TOKEN:-}
+      FB_API_VERSION: ${FB_API_VERSION:-v19.0}
+
 volumes:
   zookeeper_data:
   zookeeper_log:

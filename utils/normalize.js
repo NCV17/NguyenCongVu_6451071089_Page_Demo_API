@@ -10,6 +10,8 @@ function normalizeFacebookEvent(entry) {
 
         events.push({
           source: "facebook",
+
+          // post | comment
           type: value.item || "feed",
 
           page_id: value.page_id,
@@ -19,9 +21,14 @@ function normalizeFacebookEvent(entry) {
 
           verb: value.verb,
 
-          message: value.message,
+          // nội dung comment/post
+          message: value.message || "",
 
-          created_time: value.created_time,
+          // ===== THÊM 2 FIELD NÀY =====
+          sender_id: value.from?.id || null,
+          sender_name: value.from?.name || null,
+
+          created_time: value.created_time || new Date().toISOString(),
 
           raw: value,
         });

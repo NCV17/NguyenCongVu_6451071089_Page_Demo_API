@@ -1,0 +1,65 @@
+[
+  {
+    "commentId": "122105165732690701_1489946655906604",
+    "reason": "Phát hiện link độc hại / scam. Score: 85. Lý do: Chứa link: http://spam.com; Từ khoá spam: kiếm tiền online, click here now, inbox ngay",
+    "userId": null,
+    "message": "kiếm tiền online inbox ngay, CLICK HERE NOW http://spam.com",
+    "spamScore": 85,
+    "status": "pending",
+    "enqueuedAt": "2026-05-08T07:45:25.061Z"
+  },
+  {
+    "commentId": "122105165732690701_1712726196707126",
+    "reason": "Phát hiện link độc hại / scam. Score: 85. Lý do: Chứa link: http://spam.com; Từ khoá spam: kiếm tiền online, click here now, inbox ngay",
+    "userId": null,
+    "message": "kiếm tiền online inbox ngay, CLICK HERE NOW http://spam.com",
+    "spamScore": 85,
+    "status": "pending",
+    "enqueuedAt": "2026-05-08T07:47:51.143Z"
+  },
+  {
+    "commentId": "122105157002690701_4307868982763201",
+    "reason": "[BLACKLISTED] Spam lặp lại 3 lần trong 24h. Lý do: Từ khoá spam: kiếm tiền online, inbox ngay; Chứa SĐT: 0988888888; Lặp ký tự bất thường",
+    "userId": null,
+    "message": "kiếm tiền online inbox ngay, 0988888888",
+    "spamScore": 60,
+    "status": "pending",
+    "enqueuedAt": "2026-05-08T08:11:45.170Z"
+  },
+  {
+    "commentId": "122105157002690701_3081696662021459",
+    "reason": "[BLACKLISTED] Spam lặp lại 4 lần trong 24h. Lý do: Từ khoá spam: kiếm tiền online, inbox ngay; Chứa SĐT: 0988888888; Lặp ký tự bất thường",
+    "userId": null,
+    "message": "kiếm tiền online inbox ngay, 0988888888",
+    "spamScore": 60,
+    "status": "pending",
+    "enqueuedAt": "2026-05-08T08:11:49.329Z"
+  },
+  {
+    "commentId": "122105157002690701_1591810998548320",
+    "reason": "[BLACKLISTED] Spam lặp lại 5 lần trong 24h. Lý do: Từ khoá spam: kiếm tiền online, inbox ngay; Chứa SĐT: 0988888888; Lặp ký tự bất thường",
+    "userId": null,
+    "message": "kiếm tiền online inbox ngay, 0988888888",
+    "spamScore": 60,
+    "status": "pending",
+    "enqueuedAt": "2026-05-08T08:11:53.433Z"
+  },
+  {
+    "commentId": "122105157002690701_4307868982763201",
+    "reason": "[BLACKLISTED] Spam lặp lại 6 lần trong 24h. Lý do: Từ khoá spam: kiếm tiền online, inbox ngay; Chứa SĐT: 0988888888; Lặp ký tự bất thường",
+    "userId": null,
+    "message": "kiếm tiền online inbox ngay, 0988888888",
+    "spamScore": 60,
+    "status": "pending",
+    "enqueuedAt": "2026-05-08T08:12:10.993Z"
+  },
+  {
+    "commentId": "122105165732690701_973206195451401",
+    "reason": "[BLACKLISTED] Spam lặp lại 3 lần trong 24h. Lý do: Từ khoá spam: kiếm tiền online, inbox ngay; Chứa SĐT: 0988888888; Lặp ký tự bất thường",
+    "userId": "facebook-user",
+    "message": "kiếm tiền online inbox ngay, 0988888888",
+    "spamScore": 60,
+    "status": "pending",
+    "enqueuedAt": "2026-05-08T08:15:12.359Z"
+  }
+]
