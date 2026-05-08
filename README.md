@@ -65,7 +65,7 @@ Hệ thống hoạt động theo luồng sau:
 File `.env` quản lý các tham số quan trọng:
 ```env
 PORT=3001
-VERIFY_TOKEN=abc123
+VERIFY_TOKEN=....
 KAFKA_BROKER=localhost:9092
 TOPIC_NAME=raw_events
 ```
