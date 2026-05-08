@@ -1,19 +1,101 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Facebook Page API",
-    "version": "1.0.0",
-    "description": "API quản lý Facebook Page bằng Graph API"
+    "title": "Facebook Webhook + Kafka API",
+    "version": "2.0.0",
+    "description": "API xử lý thời gian thực với Facebook Webhook và Kafka"
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "http://localhost:3001"
     }
   ],
   "paths": {
+    "/webhook": {
+      "get": {
+        "summary": "Xác minh Webhook với Facebook",
+        "description": "Facebook gọi endpoint này để verify webhook bằng hub.verify_token",
+        "parameters": [
+          {
+            "name": "hub.mode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "subscribe"
+          },
+          {
+            "name": "hub.verify_token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "abc123"
+          },
+          {
+            "name": "hub.challenge",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Webhook verified successfully"
+          },
+          "403": {
+            "description": "Verify token không hợp lệ"
+          }
+        }
+      },
+      "post": {
+        "summary": "Nhận sự kiện realtime từ Facebook Webhook",
+        "description": "Nhận event comment/post từ Facebook, normalize payload và publish vào Kafka topic raw_events",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "object": "page",
+                  "entry": [
+                    {
+                      "id": "123456789",
+                      "time": 1714000000,
+                      "changes": [
+                        {
+                          "field": "feed",
+                          "value": {
+                            "item": "comment",
+                            "verb": "add",
+                            "comment_id": "987654321",
+                            "message": "Test comment from Swagger"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Webhook event received and pushed to Kafka successfully"
+          }
+        }
+      }
+    },
     "/api/page/{pageId}": {
       "get": {
-        "summary": "Lấy thông tin Page",
+        "summary": "Lấy thông tin Facebook Page",
         "parameters": [
           {
             "name": "pageId",
@@ -31,10 +113,9 @@
         }
       }
     },
-
     "/api/page/{pageId}/posts": {
       "get": {
-        "summary": "Lấy danh sách bài viết",
+        "summary": "Lấy danh sách bài viết của Page",
         "parameters": [
           {
             "name": "pageId",
@@ -51,9 +132,8 @@
           }
         }
       },
-
       "post": {
-        "summary": "Đăng bài viết mới",
+        "summary": "Đăng bài viết mới lên Page",
         "parameters": [
           {
             "name": "pageId",
@@ -87,7 +167,6 @@
         }
       }
     },
-
     "/api/page/post/{postId}": {
       "delete": {
         "summary": "Xóa bài viết",
@@ -108,10 +187,9 @@
         }
       }
     },
-
     "/api/page/post/{postId}/comments": {
       "get": {
-        "summary": "Lấy comments bài viết",
+        "summary": "Lấy danh sách comments của bài viết",
         "parameters": [
           {
             "name": "postId",
@@ -129,10 +207,9 @@
         }
       }
     },
-
     "/api/page/post/{postId}/likes": {
       "get": {
-        "summary": "Lấy likes bài viết",
+        "summary": "Lấy danh sách likes của bài viết",
         "parameters": [
           {
             "name": "postId",
@@ -150,10 +227,9 @@
         }
       }
     },
-
     "/api/page/{pageId}/insights": {
       "get": {
-        "summary": "Lấy insights Page",
+        "summary": "Lấy insights của Facebook Page",
         "parameters": [
           {
             "name": "pageId",
